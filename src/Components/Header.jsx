@@ -22,56 +22,69 @@ const useScrollPosition = () => {
   return visible;
 };
 
+const MenuLinks = ({ links, isMenuOpen, closeMenu }) => {
+  const menuClass = isMenuOpen
+    ? "flex absolute flex-col w-full h-full text-[32px] gap-y-16"
+    : "hidden lg:flex";
+
+  return (
+    <ul
+      className={`flex justify-center items-center gap-y-6 lg:gap-y-0 gap-x-6 lg:gap-x-16 text-lg font-normal ${menuClass}`}
+    >
+      {links.map((link) => (
+        <li key={link.id}>
+          <Link to={link.url} onClick={closeMenu}>
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const Header = () => {
   const visible = useScrollPosition();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden"; // Block page scrolling
-    } else {
-      document.body.style.overflow = ""; // Restore page scrolling
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
   }, [isMenuOpen]);
-  const links = [
+
+  const menuLinks = [
     { id: "home", label: "Home", url: "/" },
     { id: "about", label: "About me", url: "/about" },
     { id: "gallery", label: "Art gallery", url: "/gallery" },
     { id: "palette", label: "Gallery Palette", url: "/palette" },
   ];
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header
-      className={`fixed z-10 top-0 right-0 w-full transition-transform duration-300 transform ${
-        visible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
-      <nav
-        className={`px-6  lg:px-[48px] py-3 shadow backdrop-blur-[100px] flex justify-between items-start ${
-          isMenuOpen ? "h-screen " : ""
-        } `}
+    <>
+      <header
+        className={`fixed z-10 top-0 right-0 w-full transition-transform duration-300 transform ${
+          visible ? "translate-y-0" : "-translate-y-full"
+        }`}
       >
-        <div className="text-2xl font-normal">Yaroslav Dveik</div>
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden z-10"
+        <nav
+          className={`px-6 relative lg:px-[48px] py-3 shadow backdrop-blur-[100px] flex justify-between items-start ${
+            isMenuOpen ? "h-screen " : ""
+          } `}
         >
-          <BurgerMenu />
-        </button>
-        <ul
-          className={`flex justify-center items-center gap-y-6 lg:gap-y-0 gap-x-6 lg:gap-x-16 text-lg font-normal ${
-            isMenuOpen ? "flex absolute flex-col justify-center w-full h-full" : "hidden"
-          } lg:flex`}
-        >
-          {links.map((link) => (
-            <li key={link.id}>
-              <Link to={link.url} onClick={() => setIsMenuOpen(false)}>
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+          <div className="text-xl md:text-2xl font-normal">Yaroslav Dveik</div>
+          <button onClick={toggleMenu} className="lg:hidden z-10">
+            <BurgerMenu />
+          </button>
+          <MenuLinks
+            links={menuLinks}
+            isMenuOpen={isMenuOpen}
+            closeMenu={() => setIsMenuOpen(false)}
+          />
+        </nav>
+      </header>
+    </>
   );
 };
 

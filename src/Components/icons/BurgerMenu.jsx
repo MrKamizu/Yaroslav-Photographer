@@ -5,7 +5,7 @@ const BurgerMenu = () => {
 
   return (
     <div
-      className={` relative w-14 h-10 cursor-pointer flex justify-between ${
+      className={` relative w-11 h-9 cursor-pointer flex justify-between ${
         isOpen ? "open" : ""
       }`}
       onClick={() => setIsOpen(!isOpen)}
