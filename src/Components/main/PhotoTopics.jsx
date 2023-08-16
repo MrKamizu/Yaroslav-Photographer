@@ -5,7 +5,7 @@ const PhotoTopics = () => {
   return (
     <div className="mx-[48px] my-10">
       <div className="w-full justify-between items-center inline-flex mb-10">
-        <div className="text-stone-100 text-[64px] font-normal uppercase leading-[57.60px] tracking-wide">
+        <div className="text-stone-100 md:text-[48px] lg:text-[64px] font-normal uppercase leading-[1.2] md:leading-[1.3] lg:leading-[57.60px] tracking-wide">
           Selected topics
         </div>
         <div className="justify-end items-center flex">

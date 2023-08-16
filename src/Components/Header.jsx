@@ -46,7 +46,7 @@ const Header = () => {
       }`}
     >
       <nav
-        className={`px-6  lg:px-48 py-3 shadow backdrop-blur-[100px] flex justify-between items-start ${
+        className={`px-6  lg:px-[48px] py-3 shadow backdrop-blur-[100px] flex justify-between items-start ${
           isMenuOpen ? "h-screen " : ""
         } `}
       >
