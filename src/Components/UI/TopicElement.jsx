@@ -21,7 +21,7 @@ const data = [
   },
   {
     imageUrl: "https://via.placeholder.com/1884x1080",
-    category: "Dicks",
+    category: "Ducks",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },

@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-const BurgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const BurgerMenu = ({ isOpen, toggleMenu }) => {
   return (
     <div
       className={` relative w-11 h-9 cursor-pointer flex justify-between ${
         isOpen ? "open" : ""
       }`}
-      onClick={() => setIsOpen(!isOpen)}
+      onClick={toggleMenu}
     >
       <span
         className={`absolute h-1 w-full bg-white rounded-full transition-all duration-500 ${

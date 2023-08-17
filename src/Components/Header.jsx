@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import BurgerMenu from "./icons/BurgerMenu";
 
 const useScrollPosition = () => {
@@ -45,6 +45,11 @@ const MenuLinks = ({ links, isMenuOpen, closeMenu }) => {
 const Header = () => {
   const visible = useScrollPosition();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -54,7 +59,7 @@ const Header = () => {
     { id: "home", label: "Home", url: "/" },
     { id: "about", label: "About me", url: "/about" },
     { id: "gallery", label: "Art gallery", url: "/gallery" },
-    { id: "palette", label: "Gallery Palette", url: "/palette" },
+    { id: "topics", label: "Topics", url: "/topics" },
   ];
 
   const toggleMenu = () => {
@@ -75,7 +80,7 @@ const Header = () => {
         >
           <div className="text-xl md:text-2xl font-normal">Yaroslav Dveik</div>
           <button onClick={toggleMenu} className="lg:hidden z-10">
-            <BurgerMenu />
+            <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
           </button>
           <MenuLinks
             links={menuLinks}
