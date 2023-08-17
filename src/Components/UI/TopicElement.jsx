@@ -25,11 +25,24 @@ const data = [
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
+  {
+    imageUrl: "https://via.placeholder.com/1884x1080",
+    category: "Body",
+    topic: "View topic",
+    author: "Yaroslav Dveik",
+  },
+  {
+    imageUrl: "https://via.placeholder.com/1884x1080",
+    category: "Paws",
+    topic: "View topic",
+    author: "Yaroslav Dveik",
+  },
   // Додайте ще 3 об'єкти з різними значеннями
 ];
 
-const TopicElement = () => {
+const TopicElement = ({ displayAll }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const limitedData = displayAll ? data : data.slice(0, 4); // Get all elements if displayAll is true, otherwise get only the first 4 elements
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,7 +58,7 @@ const TopicElement = () => {
 
   return (
     <div>
-      {data.map((item, index) => (
+      {limitedData.map((item, index) => (
         <div
           key={index}
           className="mb-3 md:mb-5 lg:mb-10 relative w-full rounded-[10px] md:rounded-[16px] flex-col justify-start items-center inline-flex overflow-hidden"
@@ -57,7 +70,7 @@ const TopicElement = () => {
           />
 
           <div
-            className={`absolute w-full h-full p-[2rem] sm:p-[2rem] md:p-[4rem] lg:p-[6rem] xl:p-[10rem] 2xl:p-[12rem] ${
+            className={`absolute w-full h-full p-[1rem] sm:p-[2rem] md:p-[2rem] lg:p-[3rem] xl:p-[3rem] 2xl:p-[4rem] 3xl:p-[6rem] ${
               isMobile
                 ? "flex flex-col justify-between"
                 : "justify-between items-start inline-flex"

@@ -24,12 +24,12 @@ const useScrollPosition = () => {
 
 const MenuLinks = ({ links, isMenuOpen, closeMenu }) => {
   const menuClass = isMenuOpen
-    ? "flex absolute flex-col w-full h-full text-[32px] gap-y-16"
+    ? "flex absolute flex-col w-full h-full text-[32px] gap-y-16 "
     : "hidden lg:flex";
 
   return (
     <ul
-      className={`flex justify-center items-center gap-y-6 lg:gap-y-0 gap-x-6 lg:gap-x-16 text-lg font-normal ${menuClass}`}
+      className={`flex justify-center items-center gap-y-6 lg:gap-y-0 gap-x-6 lg:gap-x-16 text-lg 2xl:text-2xl font-normal ${menuClass}`}
     >
       {links.map((link) => (
         <li key={link.id}>
@@ -78,7 +78,9 @@ const Header = () => {
             isMenuOpen ? "h-screen " : ""
           } `}
         >
-          <div className="text-xl md:text-2xl font-normal">Yaroslav Dveik</div>
+          <div className="text-xl md:text-2xl 2xl:text-3xl font-normal">
+            Yaroslav Dveik
+          </div>
           <button onClick={toggleMenu} className="lg:hidden z-10">
             <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
           </button>

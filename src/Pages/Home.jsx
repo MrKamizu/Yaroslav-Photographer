@@ -4,9 +4,8 @@ import PhotoTopics from "../Components/main/PhotoTopics";
 
 const Home = () => (
   <>
-    {/* Відображення секції з головним зображенням */}
     <HeroSection />
-    <PhotoTopics />
+    <PhotoTopics displayAll={false} />
   </>
 );
 
