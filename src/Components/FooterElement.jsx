@@ -1,9 +1,39 @@
 import React from "react";
+import Instagram from "./icons/Instagram.svg";
+import Telegram from "./icons/Telegram.svg";
+import X from "./icons/X.svg";
 
 const FooterElement = () => {
+  const socialIcons = [
+    { icon: Instagram, link: "/" },
+    { icon: Telegram, link: "/" },
+    { icon: X, link: "/" },
+  ];
+
+  const informationLinks = ["Terms of use of the site", "Contacts"];
+
+  const renderSocialIcons = () => {
+    return socialIcons.map((item, index) => (
+      <a key={index} className="w-5 h-5" href={item.link}>
+        <img className="w-full h-full" src={item.icon} alt="" />
+      </a>
+    ));
+  };
+
+  const renderInformationLinks = () => {
+    return informationLinks.map((link, index) => (
+      <div
+        key={index}
+        className="text-zinc-400 text-sm md:text-base font-normal tracking-wide"
+      >
+        {link}
+      </div>
+    ));
+  };
+
   return (
-    <div className="max-w-[1980px] mx-auto py-2.5 flex flex-col items-center">
-      <div className="w-full flex flex-col lg:flex-row justify-between items-start px-4 md:px-8 lg:px-12">
+    <div className="max-w-[1380px] mx-auto py-2.5 flex flex-col items-center">
+      <div className="w-full flex flex-col lg:flex-row justify-between items-start px-4 md:px-8 lg:px-16">
         <div className="flex flex-col justify-start items-start gap-5">
           <div className="text-white text-2xl md:text-4xl lg:text-5xl 2xl:text-6xl font-medium tracking-wide">
             Yaroslav Dveik
@@ -17,19 +47,14 @@ const FooterElement = () => {
           <div className="text-white text-sm md:text-base font-medium tracking-wide">
             ІНФОРМАЦІЯ
           </div>
-          <div className="text-zinc-400 text-sm md:text-base font-normal tracking-wide">
-            Terms of use of the site
-          </div>
-          <div className="text-zinc-400 text-sm md:text-base font-normal tracking-wide">
-            Contacts
-          </div>
+          {renderInformationLinks()}
         </div>
         <div className="flex flex-col justify-start items-start gap-5">
           <div className="text-white text-sm md:text-base font-medium tracking-wide">
             Contact me
           </div>
-          <div className="relative">
-            {/* Your contact icons or information here */}
+          <div className="relative flex justify-between items-start w-full">
+            {renderSocialIcons()}
           </div>
         </div>
       </div>
