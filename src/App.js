@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import ArtGallery from "./Pages/ArtGallery";
 import Topics from "./Pages/Topics";
+import FooterElement from "./Components/FooterElement";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/topics" element={<Topics />} />
           <Route path="/about" element={<About />} />
         </Routes>
+
+        <FooterElement />
       </Router>
     </div>
   );
