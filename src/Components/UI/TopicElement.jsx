@@ -82,9 +82,9 @@ const TopicElement = ({ displayAll }) => {
               </div>
 
               <div className="justify-start items-center gap-[1.25rem] inline-flex">
-                <div className="p-[0.5rem] bg-white bg-opacity-5 rounded-[4rem] border border-white border-opacity-20 backdrop-blur-[0.625rem] justify-center items-center flex">
+                {/* <div className="p-[0.5rem] bg-white bg-opacity-5 rounded-[4rem] border border-white border-opacity-20 backdrop-blur-[0.625rem] justify-center items-center flex">
                   <div className="p-[0.25rem] justify-center items-center flex" />
-                </div>
+                </div> */}
 
                 <div className="text-center text-stone-100 text-[16px] md:text-lg font-normal leading-none tracking-wide">
                   {item.topic}

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
 import Home from "./Pages/Home";
@@ -10,17 +9,18 @@ import FooterElement from "./Components/FooterElement";
 
 function App() {
   return (
-    <div className="App">
+    <div className="flex flex-col min-h-screen w-full max-w-[1980px] m-auto">
       <Router>
         <Header />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/gallery" element={<ArtGallery />} />
-          <Route path="/topics" element={<Topics />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/gallery" element={<ArtGallery />} />
+            <Route path="/topics" element={<Topics />} />
+          </Routes>
+        </div>
 
         <FooterElement />
       </Router>
