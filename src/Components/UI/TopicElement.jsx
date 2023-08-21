@@ -2,57 +2,69 @@ import React, { useState, useEffect } from "react";
 
 const data = [
   {
-    imageUrl: "https://via.placeholder.com/1884x1080",
+    imageUrl:
+      "https://pbs.twimg.com/media/F3tlgNTaQAAhOYS?format=jpg&name=large",
     category: "architecture",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
   {
-    imageUrl: "https://via.placeholder.com/1884x1080",
+    imageUrl:
+      "https://pbs.twimg.com/media/F36bOArW0AEOnfo?format=jpg&name=medium",
     category: "b&w",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
   {
-    imageUrl: "https://via.placeholder.com/1884x1080",
+    imageUrl:
+      "https://pbs.twimg.com/media/F3xjBddWsAEw1n5?format=jpg&name=large",
     category: "portraits",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
   {
-    imageUrl: "https://via.placeholder.com/1884x1080",
+    imageUrl:
+      "https://pbs.twimg.com/media/F3jF7QubAAAMF2n?format=jpg&name=large",
     category: "Ducks",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
   {
-    imageUrl: "https://via.placeholder.com/1884x1080",
+    imageUrl:
+      "https://pbs.twimg.com/media/F3dQIAQaQAA5Pqn?format=jpg&name=large",
     category: "Body",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
   {
-    imageUrl: "https://via.placeholder.com/1884x1080",
+    imageUrl:
+      "https://pbs.twimg.com/media/F3d3ejVbkAAcqX6?format=jpg&name=4096x4096",
     category: "Paws",
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
-  // Додайте ще 3 об'єкти з різними значеннями
 ];
 
 const TopicElement = ({ displayAll }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const limitedData = displayAll ? data : data.slice(0, 4); // Get all elements if displayAll is true, otherwise get only the first 4 elements
+  const [scrollY, setScrollY] = useState(0);
+  const limitedData = displayAll ? data : data.slice(0, 4);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -64,9 +76,11 @@ const TopicElement = ({ displayAll }) => {
           className="mb-3 md:mb-5 lg:mb-10 relative w-full rounded-[10px] md:rounded-[16px] flex-col justify-start items-center inline-flex overflow-hidden"
         >
           <img
+            loading="lazy"
             className="h-1/3 md:h-screen w-full object-cover brightness-75"
             src={item.imageUrl}
             alt="Placeholder"
+            style={{ transform: `translateY(${scrollY * 0.4}px)` }}
           />
 
           <div

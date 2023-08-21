@@ -5,26 +5,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #191919;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #d4d4d473;
-  border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
 /* CSS Reset (normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css) */
 
 /* Document
@@ -138,3 +118,24 @@ h2,
 h3 {
   font-family: "Outfit", sans-serif; /* Застосовуйте шрифт до заголовків */
 }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #191919;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d4d4d473;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

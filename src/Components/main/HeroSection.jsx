@@ -9,6 +9,7 @@ const HeroSection = () => {
     <div className="relative">
       <div className="relative flex items-center justify-center lg:justify-normal bg-gradient-to-t from-black">
         <img
+          loading="lazy"
           className="h-screen w-full object-cover brightness-90"
           src={MainVideo}
           alt="MainVideo"
