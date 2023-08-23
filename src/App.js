@@ -1,9 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Home, About, ArtGallery, Topics } from "./Pages";
-
-import { HeaderElement, FooterElement } from "./components/layouts";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import ArtGallery from "./Pages/ArtGallery";
+import Topics from "./Pages/Topics";
+import HeaderElement from "./components/layouts/HeaderElement";
+import FooterElement from "./components/layouts/FooterElement";
 
 function App() {
   return (

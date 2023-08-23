@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { throttle } from "../utils/hocs";
+import { throttle } from "../utils/hofs";
 
 import BurgerMenu from "../UI/BurgerMenu";
 
