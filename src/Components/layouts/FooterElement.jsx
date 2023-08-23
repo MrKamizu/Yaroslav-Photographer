@@ -1,35 +1,37 @@
-import React from "react";
-import Instagram from "./icons/Instagram.svg";
-import Telegram from "./icons/Telegram.svg";
-import X from "./icons/X.svg";
+import React, { useMemo } from "react";
+
+import Instagram from "../icons/Socials/Instagram.svg";
+import Telegram from "../icons/Socials/Telegram.svg";
+import X from "../icons/Socials/X.svg";
+
+const SOCIAL_ICONS = [
+  { icon: Instagram, link: "/" },
+  { icon: Telegram, link: "/" },
+  { icon: X, link: "/" },
+];
+
+const INFORMATION_LINKS = ["Terms of use of the site", "Contacts"];
+
+const renderInformationLinks = () =>
+  INFORMATION_LINKS.map((link, index) => (
+    <div
+      key={index}
+      className="text-zinc-400 text-sm md:text-base font-normal tracking-wide"
+    >
+      {link}
+    </div>
+  ));
+
+const renderSocialIcons = () =>
+  SOCIAL_ICONS.map((item, index) => (
+    <a key={index} className="w-5 h-5" href={item.link}>
+      <img className="w-full h-full" src={item.icon} alt="" />
+    </a>
+  ));
 
 const FooterElement = () => {
-  const socialIcons = [
-    { icon: Instagram, link: "/" },
-    { icon: Telegram, link: "/" },
-    { icon: X, link: "/" },
-  ];
-
-  const informationLinks = ["Terms of use of the site", "Contacts"];
-
-  const renderSocialIcons = () => {
-    return socialIcons.map((item, index) => (
-      <a key={index} className="w-5 h-5" href={item.link}>
-        <img className="w-full h-full" src={item.icon} alt="" />
-      </a>
-    ));
-  };
-
-  const renderInformationLinks = () => {
-    return informationLinks.map((link, index) => (
-      <div
-        key={index}
-        className="text-zinc-400 text-sm md:text-base font-normal tracking-wide"
-      >
-        {link}
-      </div>
-    ));
-  };
+  const informationLinks = useMemo(() => renderInformationLinks(), []);
+  const socialIcons = useMemo(() => renderSocialIcons(), []);
 
   return (
     <div className="w-full mx-auto py-2.5 flex flex-col items-center p-4 md:px-[32px] lg:px-[300px]">
@@ -47,14 +49,14 @@ const FooterElement = () => {
           <div className="text-white text-sm md:text-base font-medium tracking-wide">
             ІНФОРМАЦІЯ
           </div>
-          {renderInformationLinks()}
+          {informationLinks}
         </div>
         <div className="flex flex-col justify-start items-start gap-5">
           <div className="text-white text-sm md:text-base font-medium tracking-wide">
             Contact me
           </div>
           <div className="relative flex justify-between items-start w-full">
-            {renderSocialIcons()}
+            {socialIcons}
           </div>
         </div>
       </div>

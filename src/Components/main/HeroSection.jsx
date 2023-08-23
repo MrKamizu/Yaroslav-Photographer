@@ -1,8 +1,8 @@
 import React from "react";
 
+import ScrollDownIcon from "../UI/ScrollDownIcon";
+import ContactMeButton from "../UI/ContactMeButton";
 import MainVideo from "../../assets/MainVideo.jpg";
-import ScrollDownIcon from "../icons/ScrollDownIcon";
-import ContactMeButton from "../Buttons/ContactMeButton";
 
 const HeroSection = () => {
   return (

@@ -1,12 +1,12 @@
 import React from "react";
-import TopicElement from "../Components/UI/TopicElement";
+// import TopicElement from "../components/UI/TopicElement";
 
 const Topics = () => {
   return (
     <>
       <div className="mx-[16px] md:mx-[32px] lg:mx-[48px] my-10">
         <div className="mt-[60px]"></div>
-        <TopicElement displayAll={true} />
+        {/* <TopicElement displayAll={true} /> */}
       </div>
     </>
   );

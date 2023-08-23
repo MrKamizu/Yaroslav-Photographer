@@ -1,17 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import ArtGallery from "./Pages/ArtGallery";
-import Topics from "./Pages/Topics";
-import FooterElement from "./Components/FooterElement";
+
+import { Home, About, ArtGallery, Topics } from "./Pages";
+
+import { HeaderElement, FooterElement } from "./components/layouts";
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen w-full max-w-[1980px] m-auto">
       <Router>
-        <Header />
+        <HeaderElement />
 
         <div className="flex-1">
           <Routes>

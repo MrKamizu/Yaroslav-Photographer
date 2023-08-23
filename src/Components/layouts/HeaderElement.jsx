@@ -1,23 +1,31 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import BurgerMenu from "./icons/BurgerMenu";
+import { throttle } from "../utils/hocs";
 
-// Hook for tracking scroll position
+import BurgerMenu from "../UI/BurgerMenu";
+
+const scrollCallback = (prevScrollPos, setVisible) => {
+  const currentScrollPos = window.scrollY;
+  setVisible(prevScrollPos.current > currentScrollPos);
+  prevScrollPos.current = currentScrollPos;
+};
+
+const trottleScrollCallback = throttle(scrollCallback, 100);
+
+/**
+ * Hook for tracking scroll position
+ */
 const useScrollPosition = () => {
-  const prevScrollPos = useRef(window.pageYOffset);
+  const prevScrollPos = useRef(window.scrollY);
   const [visible, setVisible] = useState(true);
 
   const handleScroll = useCallback(() => {
-    const currentScrollPos = window.pageYOffset;
-    setVisible(prevScrollPos.current > currentScrollPos);
-    prevScrollPos.current = currentScrollPos;
+    trottleScrollCallback(prevScrollPos, setVisible);
   }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
   return visible;
@@ -44,8 +52,15 @@ const MenuLinks = ({ links, isMenuOpen, closeMenu }) => {
   );
 };
 
+const MENU_LINKS = [
+  { id: "home", label: "Home", url: "/" },
+  { id: "about", label: "About me", url: "/about" },
+  { id: "gallery", label: "Art gallery", url: "/gallery" },
+  { id: "topics", label: "Topics", url: "/topics" },
+];
+
 // Header component
-const Header = () => {
+const HeaderElement = () => {
   const visible = useScrollPosition();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -58,15 +73,8 @@ const Header = () => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
   }, [isMenuOpen]);
 
-  const menuLinks = [
-    { id: "home", label: "Home", url: "/" },
-    { id: "about", label: "About me", url: "/about" },
-    { id: "gallery", label: "Art gallery", url: "/gallery" },
-    { id: "topics", label: "Topics", url: "/topics" },
-  ];
-
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((currentValue) => !currentValue);
   };
 
   return (
@@ -88,7 +96,7 @@ const Header = () => {
             <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
           </button>
           <MenuLinks
-            links={menuLinks}
+            links={MENU_LINKS}
             isMenuOpen={isMenuOpen}
             closeMenu={() => setIsMenuOpen(false)}
           />
@@ -98,4 +106,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderElement;
