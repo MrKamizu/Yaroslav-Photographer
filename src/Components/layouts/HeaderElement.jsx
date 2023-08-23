@@ -74,7 +74,7 @@ const HeaderElement = () => {
   }, [isMenuOpen]);
 
   const toggleMenu = () => {
-    setIsMenuOpen((currentValue) => !currentValue);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -85,8 +85,8 @@ const HeaderElement = () => {
         }`}
       >
         <nav
-          className={`px-6 relative lg:px-[48px] py-3 shadow backdrop-blur-[100px] flex justify-between items-start justify-center items-center${
-            isMenuOpen ? "h-screen " : ""
+          className={`px-6 relative lg:px-[48px] py-3 shadow backdrop-blur-[100px] flex justify-between  justify-center items-center ${
+            isMenuOpen ? "h-screen items-baseline " : ""
           }`}
         >
           <div className="text-md md:text-xl 2xl:text-2xl font-normal">

@@ -20,7 +20,7 @@ const TopicElement = ({
     const relative =
       elementPosition.y - (windowHeight - elementPosition.height) / 2;
 
-    return isVisible ? -relative * 0.2 : 0;
+    return isVisible ? -relative * 0.5 : 0;
   }, []);
 
   useEffect(() => {
@@ -30,11 +30,11 @@ const TopicElement = ({
   return (
     <div
       ref={currentEl}
-      className="mb-3 md:mb-5 lg:mb-10 relative md:h-screen w-full rounded-[10px] md:rounded-[16px] flex-col justify-start items-center inline-flex overflow-hidden"
+      className="mb-3 md:mb-5 lg:mb-10 relative h-[33vh] md:max-h-full md:h-screen w-full rounded-[10px] md:rounded-[16px] flex-col justify-start items-center inline-flex overflow-hidden"
     >
       <img
         loading="lazy"
-        className="w-full object-cover brightness-75"
+        className="w-full h-full object-cover brightness-75"
         src={imageUrl}
         alt="Placeholder"
         style={{ transform: `translateY(${offset}px)` }}
@@ -59,8 +59,8 @@ const TopicElement = ({
             </div>
           </div>
         </div>
-        <div className="backdrop-blur-[0.625rem] items-center flex">
-          <div className="px-[0.5rem] py-[0.5rem] md:px-[1.5rem] md:py-[0.75rem] bg-white bg-opacity-5 rounded border border-white border-opacity-20 justify-start items-start flex">
+        <div className="items-center flex">
+          <div className=" backdrop-blur-[0.625rem] px-[0.5rem] py-[0.5rem] md:px-[1.5rem] md:py-[0.75rem] bg-white bg-opacity-5 rounded border border-white border-opacity-20 justify-start items-start flex">
             <div className="text-white text-sm md:text-lg font-normal">
               {author}
             </div>

@@ -2,7 +2,7 @@ const imageList = [
   {
     id: 1,
     imageUrl:
-      "https://pbs.twimg.com/media/F3tlgNTaQAAhOYS?format=jpg&name=large",
+      "https://pbs.twimg.com/media/F4H9d0xbQAE73pi?format=webp&name=900x900",
     category: "architecture",
     topic: "View topic",
     author: "Yaroslav Dveik",
