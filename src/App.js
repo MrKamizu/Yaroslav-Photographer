@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Home, About, ArtGallery, Topics } from "./Pages";
 
-import { HeaderElement, FooterElement } from "./components/layouts/index";
+import { HeaderElement, FooterElement } from "./components/layouts";
 
 function App() {
   return (
