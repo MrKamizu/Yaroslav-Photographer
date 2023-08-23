@@ -1,6 +1,6 @@
 import React from "react";
-import HeroSection from "../Components/main/HeroSection";
-import PhotoTopics from "../Components/main/PhotoTopics";
+import HeroSection from "../components/main/HeroSection";
+import PhotoTopics from "../components/main/PhotoTopics";
 
 const Home = () => (
   <>

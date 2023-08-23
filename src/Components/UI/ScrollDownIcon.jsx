@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
+
 import Arrow from "../../assets/Arrow.svg";
+
 const ScrollDownIcon = () => {
   const scrollToDown = useCallback(() => {
     window.scrollTo({
@@ -7,6 +9,7 @@ const ScrollDownIcon = () => {
       behavior: "smooth",
     });
   }, []);
+
   return (
     <>
       <span
@@ -15,7 +18,7 @@ const ScrollDownIcon = () => {
         }
         onClick={scrollToDown}
       >
-        <img src={Arrow} alt="" className="w-[32px]"/>
+        <img src={Arrow} alt="" className="w-[32px]" />
       </span>
     </>
   );

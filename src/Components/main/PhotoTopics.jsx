@@ -1,5 +1,8 @@
 import React from "react";
-import TopicElement from "../UI/TopicElement";
+
+import TopicList from "../topic/TopicList";
+
+const PER_PAGE = 4;
 
 const PhotoTopics = () => {
   return (
@@ -19,7 +22,7 @@ const PhotoTopics = () => {
           </div>
         </div>
       </div>
-      <TopicElement />
+      <TopicList perPage={PER_PAGE} />
     </div>
   );
 };
