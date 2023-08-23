@@ -5,7 +5,7 @@ import PhotoTopics from "../components/main/PhotoTopics";
 const Home = () => (
   <>
     <HeroSection />
-    <PhotoTopics displayAll={false} />
+    <PhotoTopics />
   </>
 );
 
