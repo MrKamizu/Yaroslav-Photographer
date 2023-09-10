@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 
 import TopicElement from "./TopicElement";
 import { imageListState } from "../../state/imageAtoms";
-import { throttle } from "../utils/hocs";
+import { throttle } from "../utils/hofs";
 
 const TopicList = ({ perPage = null }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);

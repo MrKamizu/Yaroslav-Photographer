@@ -1,37 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { throttle } from "../utils/hocs";
 
-import BurgerMenu from "../UI/BurgerMenu";
+import BurgerMenu from "../UI/BurgerMenu"; // Імпорт компонента для бургер-меню
+import useScrollPosition from "../hooks/useScrollPosition";
 
-const scrollCallback = (prevScrollPos, setVisible) => {
-  const currentScrollPos = window.scrollY;
-  setVisible(prevScrollPos.current > currentScrollPos);
-  prevScrollPos.current = currentScrollPos;
-};
-
-const trottleScrollCallback = throttle(scrollCallback, 100);
-
-/**
- * Hook for tracking scroll position
- */
-const useScrollPosition = () => {
-  const prevScrollPos = useRef(window.scrollY);
-  const [visible, setVisible] = useState(true);
-
-  const handleScroll = useCallback(() => {
-    trottleScrollCallback(prevScrollPos, setVisible);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  return visible;
-};
-
-// Component for rendering menu links
+// Компонент для відображення посилань меню
 const MenuLinks = ({ links, isMenuOpen, closeMenu }) => {
   const menuClass = isMenuOpen
     ? "flex absolute flex-col w-full h-full text-[32px] gap-y-16 m-[-24px]"
@@ -52,14 +25,16 @@ const MenuLinks = ({ links, isMenuOpen, closeMenu }) => {
   );
 };
 
+// Масив з посиланнями для меню
 const MENU_LINKS = [
   { id: "home", label: "Home", url: "/" },
   { id: "about", label: "About me", url: "/about" },
   { id: "gallery", label: "Art gallery", url: "/gallery" },
   { id: "topics", label: "Topics", url: "/topics" },
+  { id: "contact  ", label: "Contact", url: "/contact" },
 ];
 
-// Header component
+// Компонент заголовка
 const HeaderElement = () => {
   const visible = useScrollPosition();
   const [isMenuOpen, setIsMenuOpen] = useState(false);

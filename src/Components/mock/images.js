@@ -47,6 +47,23 @@ const imageList = [
     topic: "View topic",
     author: "Yaroslav Dveik",
   },
+  {
+    id: 7,
+    imageUrl:
+      "https://pbs.twimg.com/media/F4JMypeakAEMArN?format=webp&name=small",
+    category: "Paws",
+    topic: "View topic",
+    author: "Yaroslav Dveik",
+  },
+  {
+    id: 8,
+    imageUrl:
+      "https://pbs.twimg.com/media/F4KoCrfWoAEMY49?format=webp&name=small",
+    category: "Paws",
+    topic: "View topic",
+    author: "Yaroslav Dveik",
+  },
+
 ];
 
 export { imageList };
